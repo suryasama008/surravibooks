@@ -14,6 +14,7 @@ interface Props {
   onAddStock: (s: Omit<StockEntry, 'id' | 'created_at'>) => Promise<void>
   onUpdateStock: (id: string, s: Partial<Omit<StockEntry, 'id' | 'created_at'>>) => Promise<void>
   onDeleteStock: (id: string) => Promise<void>
+  onBulkImportStock?: (newMaterials: Omit<Material, 'id' | 'created_at'>[], stockRows: (Omit<StockEntry, 'id' | 'created_at' | 'material_id'> & { material_name: string })[]) => Promise<{ stockCount: number; newMatCount: number } | void>
 }
 
 function fmt(n: number) {
